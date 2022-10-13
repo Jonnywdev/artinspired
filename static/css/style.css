@@ -8,6 +8,7 @@ body {
     background-color: #F9FAFC;
 }
 
+
 .active {
     color: #000;
 }
@@ -24,6 +25,11 @@ body {
 
 .form-display {
     margin: 0 auto 0 15px !important;
+}
+
+.form-control:focus {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .nav-links {
@@ -54,6 +60,60 @@ body {
 .searchbar-wrapped {
     display: flex;
     flex-direction: row;
+}
+
+.input-group-text, .blck-border {
+    border: 1px solid #000;
+}
+
+/* header end  */
+
+
+footer {
+    display: none;
+}
+
+@media (max-width: 991px) {
+
+    footer {
+        background: #000;
+        display: flex;
+        width: 100%;
+        z-index: 5;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: #fff;
+    }
+
+    nav {
+        display: none !important;
+    }
+
+    .footer-links-wrapped {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .nav-link{
+        color: #fff;
+        transition: all .5s;
+    }
+
+    .nav-link:hover {
+        color: #afafaf;
+    }
+
+    .nav-links {
+        margin: 0 !important;
+    }
+
+    .nav-item {
+        font-size: 20px;
+        margin: 0 5px;
+    }
 }
 
 .thin {

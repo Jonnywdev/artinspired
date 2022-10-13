@@ -37,20 +37,20 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">@</span>
                             </div>
-                            <input type="text" id="search" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id="search" class="form-control blck-border" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                     </div>
                 </div>
             </form>
             <div class="logo-wrapped">
-                <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1665660268/artinspired-icon_hmktna.png" alt="art inspired logo">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1665671985/curvejqn7njzdkmmsywj.png" alt="art inspired logo">
             </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-links" >
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Feed</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">My Account</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">My Account</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -75,8 +75,46 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white"></p>
+    <footer class="">
+        <div class="footer-links-wrapped" id="navbarTogglerDemo02">
+            <form class="form-inline form-display">
+                <div class="search-wrapped">
+                    <label for="search">Search for other users</label>
+                    <div class="searchbar-wrapped">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                            </div>
+                            <input type="text" id="search" class="form-control blck-border" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="logo-wrapped">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1665660268/artinspired-icon_hmktna.png" alt="art inspired logo">
+            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-links" >
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">My Account</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+      </nav>
     </footer>
 </body>
 
