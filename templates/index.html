@@ -25,15 +25,15 @@
                             </div>
                             <a href="#" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
+                                <p class="card-text">{{ post.content }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
-                                {{ post.number_of_likes }} <i class="far fa-heart"></i> {{ post.favourite}} </p>
+                            <p class="card-text text-muted h6">{{ post.created_on }} <i class="fa-solid fa-thumbs-up"></i></i>
+                                {{ post.number_of_likes }} <i class="far fa-heart"></i> {{ post.favourite }} </p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:1 %}
             </div>
             <div class="row">
                 {% endif %}
