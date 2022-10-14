@@ -8,9 +8,17 @@ body {
     background-color: #F9FAFC;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+}
 
 .active {
     color: #000;
+}
+
+.main-bg {
+    background-color: #606060;
 }
 
 /* header */
@@ -73,6 +81,12 @@ footer {
     display: none;
 }
 
+/* post */
+
+.post-width {
+    width: 60%;
+}
+
 @media (max-width: 991px) {
 
     footer {
@@ -128,31 +142,60 @@ footer {
     background-color: #445261;
 }
 
-.main-bg {
-    background-color: #F9FAFC;
-}
 
 .card {
     border: none;
     background-color: transparent;
 }
 
-.image-container {
-    position: relative;
+.card-body {
+    background: #fff;
 }
 
-.image-flash {
-    position: absolute;
-    bottom: 5%;
+.image-container {
+    position: relative;
+    background: #fff;
+    padding: 0px;
+    display: flex;
+    min-height: 37vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 8vh;
+}
+
+.image-creator {
     min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.image-creator h2 {
+    font-size: 1rem;
 }
 
 .author {
-    color: white;
+    color: black;
     margin: 4px;
     text-transform: uppercase;
+    font-weight: 600;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.favourites {
+    margin-left: 10px;
 }
 
 .masthead {
