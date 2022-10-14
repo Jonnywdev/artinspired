@@ -10,7 +10,7 @@ body {
 
 .row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .active {
@@ -50,6 +50,7 @@ body {
 
 .navbar-expand-lg {
     align-items: baseline;
+    margin-bottom: 2rem;
 }
 
 .nav-links-wrapped {
@@ -84,51 +85,10 @@ footer {
 /* post */
 
 .post-width {
-    width: 60%;
+    width: 33.3333333333%;
 }
 
-@media (max-width: 991px) {
 
-    footer {
-        background: #000;
-        display: flex;
-        width: 100%;
-        z-index: 5;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        color: #fff;
-    }
-
-    nav {
-        display: none !important;
-    }
-
-    .footer-links-wrapped {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 15px;
-    }
-
-    .nav-link{
-        color: #fff;
-        transition: all .5s;
-    }
-
-    .nav-link:hover {
-        color: #afafaf;
-    }
-
-    .nav-links {
-        margin: 0 !important;
-    }
-
-    .nav-item {
-        font-size: 20px;
-        margin: 0 5px;
-    }
-}
 
 .thin {
     font-weight: 300;
@@ -146,6 +106,7 @@ footer {
 .card {
     border: none;
     background-color: transparent;
+    min-height: 70vh;
 }
 
 .card-body {
@@ -157,9 +118,13 @@ footer {
     background: #fff;
     padding: 0px;
     display: flex;
-    min-height: 37vh;
+    min-height: 15rem;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
+    border: 0.5px solid #000;
+    max-height: 15rem;
+    overflow: hidden;
 }
 
 .card-content {
@@ -287,3 +252,59 @@ footer {
     border: none;
 }
 
+@media (max-width: 990px) {
+
+    /* footer {
+        background: #000;
+        display: flex;
+        width: 100%;
+        z-index: 5;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: #fff;
+    }
+
+    nav {
+        display: none !important;
+    }
+
+    .footer-links-wrapped {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .nav-link{
+        color: #fff;
+        transition: all .5s;
+    }
+
+    .nav-link:hover {
+        color: #afafaf;
+    }
+
+    .nav-links {
+        margin: 0 !important;
+    }
+
+    .nav-item {
+        font-size: 20px;
+        margin: 0 5px;
+    } */
+
+    .post-width {
+        width: 50%;
+    }
+}
+
+@media (max-width: 700px) {
+    .row {
+        justify-content: center;
+    }
+
+    .post-width {
+        width: 65%;
+    }
+}

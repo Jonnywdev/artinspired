@@ -36,8 +36,18 @@
                             <hr />
                             <div class="card-info">
                                 <p class="text-muted h6">{{ post.created_on }}</p>
-                                <p class="text-muted h6"><i class="fa-thumbs-up"></i> {{ post.number_of_likes }} 
-                                <i class="far fa-heart favourites"></i> Favourite {{ post.post_faves }} </p>
+                                <div class="buttons-wrapped">
+                                    <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
+                                    <strong class="text-secondary"><i class="far fa-heart favourites"></i> Favourite {{ post.post_faves }} </strong>
+                                </div>
+                                
+                            </div>
+                            <div class="col-1">
+                                {% with comments.count as total_comments %}
+                                <strong class="text-secondary"><i class="far fa-comments"></i>
+                                    <!-- Our total_comments variable goes before the closing strong tag -->
+                                    {{ total_comments }}</strong>
+                                {% endwith %}
                             </div>
                             
                         </div>
@@ -45,6 +55,12 @@
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
             </div>
+
+            <div class="col-1">
+                <!-- The number of likes goes before the closing strong tag -->
+                
+            </div>
+            
             <div class="row">
                 {% endif %}
                 {% endfor %}
