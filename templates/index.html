@@ -18,9 +18,8 @@
                                     <img class="card-img-top"
                                         src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1665741283/no-image-found_paytvu.png">
                                     {% else %}
-                                    <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                    <a href="{{ post.featured_image.url }}" target="_blank"><img class="card-img-top" src=" {{ post.featured_image.url }}"></a>
                                     {% endif %}
-                                    
                                 </div>
                             </div>
                             <div class="card-text">
@@ -37,7 +36,7 @@
                             <div class="card-info">
                                 <p class="text-muted h6">{{ post.created_on }}</p>
                                 <div class="buttons-wrapped">
-                                    <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
+                                    <strong class="text-secondary"><i class="fa-regular fa-thumbs-up"></i> {{ post.number_of_likes }} </strong>
                                     <strong class="text-secondary"><i class="far fa-heart favourites"></i> Favourite {{ post.post_faves }} </strong>
                                 </div>
                                 
@@ -72,10 +71,10 @@
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">Go Back</a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link">View More Posts</a></li>
 
             {% endif %}
         </ul>
