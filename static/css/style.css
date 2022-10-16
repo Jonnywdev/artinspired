@@ -32,7 +32,9 @@ body {
 }
 
 .form-display {
-    margin: 0 auto 0 15px !important;
+    margin: 0 auto !important;
+    text-align: center;
+    text-transform: capitalize;
 }
 
 .form-control:focus {
@@ -73,6 +75,10 @@ body {
 
 .input-group-text, .blck-border {
     border: 1px solid #000;
+}
+
+.navbar-nav {
+    margin-right: 0 !important;
 }
 
 /* header end  */
@@ -163,82 +169,6 @@ footer {
     margin-left: 10px;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
-    text-decoration: none;
-    color: #445261;
-}
-
-.post-link:hover,
-.page-link {
-    color: #E84610;
-}
-
-.post-title {
-    margin-top: 20%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
-
 .btn-like {
     color: #E84610;
     border: none;
@@ -296,6 +226,14 @@ footer {
 
     .post-width {
         width: 50%;
+    }
+
+    .form-display {
+        text-align: left;
+    }
+
+    .navbar-collapse {
+        text-align: center;
     }
 }
 
