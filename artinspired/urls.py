@@ -6,5 +6,4 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('feed.urls'), name='feed_urls'),
     # path('accounts/', include('allauth.urls')),
-    
 ]

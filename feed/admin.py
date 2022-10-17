@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, ChatRoom
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -19,3 +19,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'post', 'created_on')
     list_filter = ('body', 'created_on')
     search_fields = ('name', 'body')
+
+
+@admin.register(ChatRoom)
+class ChatRoomAdmin(admin.ModelAdmin):
+
+    list_display = ('roomname', 'roomdesc', 'roomcreated')
+    list_filter = ('roomdesc', 'roomcreated')
+    search_fields = ('roomname', 'roomdesc')

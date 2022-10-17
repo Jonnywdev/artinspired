@@ -39,3 +39,32 @@ class Comment(models.Model):
         return f"Comment {self.body} by {self.name}"
 
 
+class RoomTopic(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class ChatRoom(models.Model):
+    roomhost = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    topic = models.ForeignKey(RoomTopic, on_delete=models.SET_NULL, null=True)
+    # peoplejoined =
+    roomname = models.CharField(max_length=200)
+    roomdesc = models.TextField(null=True, blank=True)
+    roomupdated = models.DateTimeField(auto_now=True)
+    roomcreated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.roomname
+
+
+class RoomMessage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    chatroom = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
+    messagebody = models.TextField()
+    messageupdated = models.DateTimeField(auto_now=True)
+    messagecreated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.body[0:50]
