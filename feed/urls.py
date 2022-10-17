@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('chatroom/<str:pk>', views.chatroom, name="chatroom"),
 
-    path('create-room', views.createChatRoom, name="create-chatroom")
+    path('create-chatroom', views.createChatRoom, name="create-chatroom"),
+    path('update-chatroom/<str:pk>/', views.updateChatRoom, name="update-chatroom")
 ]

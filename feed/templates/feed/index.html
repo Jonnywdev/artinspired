@@ -8,6 +8,7 @@
     <div>
         {% for chatroom in chatrooms %}
         <div>
+            <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
             <span>@{{chatroom.roomhost.username}}</span>
             <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
             <small>{{chatroom.topic.name}}</small>

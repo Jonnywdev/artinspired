@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic, View
 from .models import Post, ChatRoom
 from .forms import ChatRoomForm
@@ -33,5 +33,25 @@ def chatroom(request, pk):
 
 def createChatRoom(request):
     form = ChatRoomForm
+    if request.method == 'POST':
+        form = ChatRoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'feed/chatroom_form.html', context)
+
+
+def updateChatRoom(request, pk):
+    chatroom = ChatRoom.objects.get(id=pk)
+    form = ChatRoomForm(instance=chatroom)
+
+    if request.method == 'POST':
+        form = ChatRoomForm(request.POST, instance=chatroom)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
     context = {'form': form}
     return render(request, 'feed/chatroom_form.html', context)

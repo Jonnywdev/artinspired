@@ -55,6 +55,9 @@ class ChatRoom(models.Model):
     roomupdated = models.DateTimeField(auto_now=True)
     roomcreated = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-roomupdated', '-roomcreated']
+
     def __str__(self):
         return self.roomname
 
