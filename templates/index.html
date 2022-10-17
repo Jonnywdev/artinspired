@@ -4,6 +4,11 @@
 
 <div class="container-fluid">
     <div class="row">
+        {% for chatroom in chatrooms %}
+            <div>
+                <h5>{{chatroom.id}} -- {{chatroom.name}}</h5>
+            </div>
+        {% endfor %}
 
         <!-- Post Entries Column -->
         <div class="col-12 mt-3 left">
@@ -47,6 +52,7 @@
                                     <!-- Our total_comments variable goes before the closing strong tag -->
                                     {{ total_comments }}</strong>
                                 {% endwith %}
+                                
                             </div>
                             
                         </div>

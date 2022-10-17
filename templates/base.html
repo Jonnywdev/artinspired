@@ -66,14 +66,14 @@
                         <a class="nav-link" href="{% url 'home' %}">Create Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'home' %}">Logout</a><!--account_logout-->
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link" href="{% url 'home' %}">Register</a><!--account_signup-->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'home' %}">Login</a><!--account_login-->
                     </li>
                     {% endif %}
                 </ul>
