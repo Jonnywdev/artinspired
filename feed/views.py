@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic, View
 from .models import Post, ChatRoom
+from .forms import ChatRoomForm
 
 
 # class PostList(generic.ListView):
@@ -25,14 +26,12 @@ def home(request):
 
 
 def chatroom(request, pk):
-    # chatroom = ChatRoom.objects.get(id)
+    chatroom = ChatRoom.objects.get(id=pk)
     context = {'chatroom': chatroom}
-
     return render(request, 'feed/chatroom.html', context)
 
 
 def createChatRoom(request):
-
-    context = {}
+    form = ChatRoomForm
+    context = {'form': form}
     return render(request, 'feed/chatroom_form.html', context)
-    
