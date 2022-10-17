@@ -5,7 +5,10 @@
     <div>
         {% for chatroom in chatrooms %}
         <div>
-            <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.name}}</a></h5>
+            <span>@{{chatroom.roomhost.username}}</span>
+            <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
+            <small>{{chatroom.topic.name}}</small>
+            <hr>
         </div>
         {% endfor %}
     </div>
