@@ -18,10 +18,10 @@ chatrooms = [
 ]
 
 
-def chatroom(request):
-    context = {'chatrooms': chatrooms}
-    return render(request, 'chatroom.html')
-
-
 def home(request):
-    return render(request, 'index.html', {'chatrooms': chatrooms})
+    context = {'chatrooms': chatrooms}
+    return render(request, 'feed/index.html', context)
+
+
+def chatroom(request, pk):
+    return render(request, 'feed/chatroom.html')
