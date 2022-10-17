@@ -54,16 +54,16 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link show-search" aria-current="page" href="{% url 'home' %}"><i class="fa-solid fa-magnifying-glass search"></i></a>
+                        <a class="nav-link show-search" href="{% url 'home' %}"><i class="fa-solid fa-magnifying-glass search"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hide" aria-current="page" href="{% url 'home' %}">Search</a>
+                        <a class="nav-link hide" href="{% url 'home' %}">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'account' %}">My Account</a>
+                        <a class="nav-link" href="{% url 'home' %}">My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'createpost' %}">Create Post</a>
+                        <a class="nav-link" href="{% url 'home' %}">Create Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
