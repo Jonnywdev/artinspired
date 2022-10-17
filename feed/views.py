@@ -29,3 +29,10 @@ def chatroom(request, pk):
     context = {'chatroom': chatroom}
 
     return render(request, 'feed/chatroom.html', context)
+
+
+def createChatRoom(request):
+
+    context = {}
+    return render(request, 'feed/chatroom_form.html', context)
+    

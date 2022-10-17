@@ -2,6 +2,9 @@
 
 {% block content %}
 <div>
+
+    <a href="{% url 'create-chatroom' %}">Create a chatroom</a>
+
     <div>
         {% for chatroom in chatrooms %}
         <div>
