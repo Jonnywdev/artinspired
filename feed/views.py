@@ -55,3 +55,11 @@ def updateChatRoom(request, pk):
 
     context = {'form': form}
     return render(request, 'feed/chatroom_form.html', context)
+
+
+def deleteChatRoom(request, pk):
+    chatroom = ChatRoom.objects.get(id=pk)
+    if request.method == 'POST':
+        chatroom.delete()
+        return redirect('home')
+    return render(request, 'feed/delete.html', {'obj': chatroom})
