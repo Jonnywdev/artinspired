@@ -17,6 +17,12 @@ body {
     display: none;
 }
 
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .active {
     color: #000;
 }
@@ -203,6 +209,57 @@ body {
 }
 
 .page-link:hover {
+    color: #000;
+}
+
+.registration-containers {
+    background: #eee;
+    border-radius: 15px;
+    box-shadow: 5px 10px 18px #000;
+}
+
+.generic-signin-form {
+    margin-bottom: 1rem;
+}
+
+.registration-links {
+    color: #da6720;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.5s;
+}
+
+.registration-links:hover {
+    color: #f97228;
+}
+
+.small-link {
+    font-size: 12px;
+    text-decoration: none;
+    color: #000;
+}
+
+.small-link:hover {
+    color: #000;
+}
+
+.sign-up-btn {
+    background: #da6720; 
+    margin-bottom: 0.5rem;
+    transition: all 0.5s;
+}
+
+.sign-up-btn:hover {
+    background: #f97228;
+}
+
+.go-back-btn {
+    color: #000;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.go-back-btn:hover {
     color: #000;
 }
 

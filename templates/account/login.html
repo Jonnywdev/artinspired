@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="container registration-containers">
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h3>{% trans "Sign In" %}</h3>
+      <p>{% blocktrans %}Welcome to Inspired Art we are a social media platform based on art, to like, favourite 
+        and comment on posts, 
+      <a href="{{ signup_url }}" class="registration-links">sign up</a> here.{% endblocktrans %}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <form class="login generic-signin-form" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="flex-col">
+          <button class="btn sign-up-btn" type="submit">{% trans "Sign In" %}</button>
+          <a class="small-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
