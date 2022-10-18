@@ -23,7 +23,7 @@
             <div>
                 {% for chatroom in chatrooms %}
                 <div>
-                    {% if user.is_authenticated %}
+                    {% if request.user == chatroom.roomhost %}
                     <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
                     <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
                     {% endif %}

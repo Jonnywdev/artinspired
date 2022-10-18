@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dmegr1g6f/image/upload/v1666089524/favicon_orcot3.ico">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
@@ -28,7 +29,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <div class="logo-wrapped">
-                <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1665671985/curvejqn7njzdkmmsywj.png" alt="art inspired logo">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1666089648/art-logo-white_iflpax.png" alt="art inspired logo">
             </div></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,31 +49,41 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{% url 'view-feed' %}">feed</a>
                         </li>
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">My Account</a>
+                            <a class="nav-link" href="{% url 'home' %}">@{{request.user}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
                         {% endif %}
+                        
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main> 
+
 </body>
 </html>

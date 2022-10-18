@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.views import generic, View
 from .models import Post, ChatRoom, RoomTopic
 from .forms import ChatRoomForm
@@ -10,6 +15,54 @@ from .forms import ChatRoomForm
 #     {'id': 2, 'name': 'What does it take to be a good designer?'},
 #     {'id': 3, 'name': 'Whats the best prototype design app?'},
 # ]
+
+def loginPage(request):
+    page = 'login'
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == 'POST':
+        username = request.POST.get('username').lower()
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'User does not exist')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Username or Password does not exist')
+
+
+    context = {'page': page}
+    return render(request, 'feed/login_register.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
+
+
+def registerPage(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occurred during registration')
+
+    return render(request, 'feed/login_register.html', {'form': form})
 
 
 def home(request):
@@ -49,6 +102,10 @@ def updateChatRoom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
     form = ChatRoomForm(instance=chatroom)
 
+    if request.user != chatroom.roomhost:
+        messages.error(request, 'You can not update this room')
+        return redirect('home')
+
     if request.method == 'POST':
         form = ChatRoomForm(request.POST, instance=chatroom)
         if form.is_valid():
@@ -61,6 +118,11 @@ def updateChatRoom(request, pk):
 
 def deleteChatRoom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
+
+    if request.user != chatroom.roomhost:
+        messages.error(request, 'You can not delete this room')
+        return redirect('home')
+
     if request.method == 'POST':
         chatroom.delete()
         return redirect('home')
