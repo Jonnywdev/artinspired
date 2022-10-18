@@ -6,15 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views import generic, View
-from .models import Post, ChatRoom, RoomTopic, RoomMessage
+from .models import ChatRoom, RoomTopic, RoomMessage
 from .forms import ChatRoomForm
 
-
-# chatrooms = [
-#     {'id': 1, 'name': 'How to make your first logo.'},
-#     {'id': 2, 'name': 'What does it take to be a good designer?'},
-#     {'id': 3, 'name': 'Whats the best prototype design app?'},
-# ]
 
 def loginPage(request):
     page = 'login'
@@ -85,7 +79,9 @@ def home(request):
 def usersProfile(request, pk):
     user = User.objects.get(id=pk)
     chatrooms = user.chatroom_set.all()
-    context = {"user": user, "chatrooms": chatrooms}
+    chatroom_messages = user.roommessage_set.all()
+    topics = RoomTopic.objects.all()
+    context = {"user": user, "chatrooms": chatrooms, 'chatroom_messages': chatroom_messages, 'topics': topics}
     return render(request, 'feed/profile.html', context)
 
 
@@ -147,19 +143,6 @@ def deleteChatRoom(request, pk):
         chatroom.delete()
         return redirect('home')
     return render(request, 'feed/delete.html', {'obj': chatroom})
-
-
-def PostList(request):
-
-    # model = Post
-    # queryset = Post.objects.order_by('-created_on')
-    # template_name = 'feed/feed.html'
-    # paginate_by = 9
-    # return render(request, 'feed/feed.html')
-    model = Post
-    queryset = Post.objects.order_by('-created_on')
-    context = {'Post': Post}
-    return render(request, 'feed/feed.html', context)
 
 
 def deleteRoomMessage(request, pk):

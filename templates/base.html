@@ -46,9 +46,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">chatrooms</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{% url 'view-feed' %}">feed</a>
-                        </li>
                         {% if request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">@{{request.user}}</a>
