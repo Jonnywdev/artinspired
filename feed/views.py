@@ -74,7 +74,7 @@ def home(request):
 
     topics = RoomTopic.objects.all()
     chatroom_count = chatrooms.count()
-    chatroom_messages = RoomMessage.objects.all()
+    chatroom_messages = RoomMessage.objects.filter(Q(chatroom__topic__name__icontains=q))
 
     context = {'chatrooms': chatrooms, 'topics': topics,
                'chatroom_count': chatroom_count,
