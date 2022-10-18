@@ -5,7 +5,7 @@
         <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
         <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
         {% endif %}
-        <a href="{% url 'user-profile' chatroom.roomhost.id %}">@{{chatroom.roomhost.username}}</a>
+        <a href="#">@{{chatroom.roomhost.username}}</a>
         <h5><a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
         <small>{{chatroom.topic.name}}</small>
         <hr>

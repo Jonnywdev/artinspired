@@ -6,3 +6,4 @@ class ChatRoomForm(ModelForm):
     class Meta:
         model = ChatRoom
         fields = '__all__'
+        exclude = ['roomhost', 'participants']
