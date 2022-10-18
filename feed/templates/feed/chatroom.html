@@ -1,32 +1,42 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1>{{chatroom.roomname}}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{chatroom.roomname}}</h1>
 
-<p>{{chatroom.roomdesc}}</p>
-
-<div class="comment-wrapper">
-
-    <h3>Conversation</h3>
-    <hr>
-
-    {% for roommessage in chatroom_messages %}
-    <div>
-        <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}} ago </small>
-        <p>{{roommessage.body}}</p>
-        <hr>
+            <p>{{chatroom.roomdesc}}</p>
+            
+            <div class="comment-wrapper">
+            
+                <h3>Conversation</h3>
+                <hr>
+            
+                {% for roommessage in chatroom_messages %}
+                <div>
+                    <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}} ago </small>
+                    <p>{{roommessage.body}}</p>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+            
+            {% if request.user.is_authenticated %}
+            <div class="comment-form">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="body" placeholder="Write your message here...">
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col">
+            Who has joined section - peoplejoined
+        </div>
     </div>
-    {% endfor %}
 </div>
 
-{% if request.user.is_authenticated %}
-<div class="comment-form">
-    <form method="POST" action="">
-        {% csrf_token %}
-        <input type="text" name="body" placeholder="Write your message here...">
-    </form>
-</div>
-{% endif %}
-    
+
 
 
 {% endblock %}
