@@ -4,53 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h3>Browse Topics</h3>
-            <hr>
-            <div>
-                <a href="{% url 'home' %}">ALL</a>
-            </div>
-            {% for topic in topics%}
-            <div class="topics-wrapped">
-                <a href="{% url 'home' %}?q={{topic.name}}">{{topic}}</a>
-            </div>
-            {% endfor%}
+            {% include 'feed/modular_topics.html' %}
         </div>
         <div class="col-6">
             <h5>{{chatroom_count}} rooms available</h5>
             {% if user.is_authenticated %}
             <a href="{% url 'create-chatroom' %}">Create a chatroom</a>
             {% endif %}
-            <div>
-                {% for chatroom in chatrooms %}
-                <div>
-                    {% if request.user == chatroom.roomhost %}
-                    <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
-                    <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
-                    {% endif %}
-                    <span>@{{chatroom.roomhost.username}}</span>
-                    <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
-                    <small>{{chatroom.topic.name}}</small>
-                    <hr>
-            
-                </div>
-                {% endfor %}
-            </div>
+            {% include 'feed/modular_feed.html' %}
         </div>
         <div class="col">
-            <h3>Recent Activity</h3>
-            <hr>
-            {% for roommessage in chatroom_messages %}
-                <div>
-                    <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}} ago</small>
-                    <small>Replied to "{{roommessage.chatroom}}"</small>
-
-                    <p>{{roommessage}}</p>
-                    {% if request.user == roommessage.user%}
-                    <a href="{% url 'delete-message' roommessage.id %}">Delete</a>
-                    {% endif %}
-                    <hr>
-                </div>
-            {% endfor %}
+            {% include 'feed/modular_activity.html' %}
         </div>
     </div>
 </div>
