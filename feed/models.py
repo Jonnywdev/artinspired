@@ -33,6 +33,9 @@ class RoomMessage(models.Model):
     messageupdated = models.DateTimeField(auto_now=True)
     messagecreated = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-messageupdated', '-messagecreated']
+
     def __str__(self):
         return self.body[0:50]
 

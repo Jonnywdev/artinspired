@@ -74,15 +74,17 @@ def home(request):
 
     topics = RoomTopic.objects.all()
     chatroom_count = chatrooms.count()
+    chatroom_messages = RoomMessage.objects.all()
 
     context = {'chatrooms': chatrooms, 'topics': topics,
-               'chatroom_count': chatroom_count}
+               'chatroom_count': chatroom_count,
+               'chatroom_messages': chatroom_messages}
     return render(request, 'feed/index.html', context)
 
 
 def chatroom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
-    chatroom_messages = chatroom.roommessage_set.all().order_by('-messagecreated')
+    chatroom_messages = chatroom.roommessage_set.all()
     participants = chatroom.participants.all()
     if request.method == 'POST':
         roommessage = RoomMessage.objects.create(

@@ -15,7 +15,7 @@
             </div>
             {% endfor%}
         </div>
-        <div class="col">
+        <div class="col-6">
             <h5>{{chatroom_count}} rooms available</h5>
             {% if user.is_authenticated %}
             <a href="{% url 'create-chatroom' %}">Create a chatroom</a>
@@ -37,7 +37,16 @@
             </div>
         </div>
         <div class="col">
-            recent news section
+            <h3>Recent Activity</h3>
+            <hr>
+            {% for roommessage in chatroom_messages %}
+                <div>
+                    <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}} ago</small>
+                    <small>Replied to "{{roommessage.chatroom}}"</small>
+
+                    <p>{{roommessage}}</p>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
