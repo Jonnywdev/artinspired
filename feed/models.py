@@ -13,7 +13,7 @@ class RoomTopic(models.Model):
 class ChatRoom(models.Model):
     roomhost = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(RoomTopic, on_delete=models.SET_NULL, null=True)
-    # peoplejoined =
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
     roomname = models.CharField(max_length=200)
     roomdesc = models.TextField(null=True, blank=True)
     roomupdated = models.DateTimeField(auto_now=True)

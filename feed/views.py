@@ -75,23 +75,25 @@ def home(request):
     topics = RoomTopic.objects.all()
     chatroom_count = chatrooms.count()
 
-    context = {'chatrooms': chatrooms, 'topics': topics, 'chatroom_count': chatroom_count}
+    context = {'chatrooms': chatrooms, 'topics': topics,
+               'chatroom_count': chatroom_count}
     return render(request, 'feed/index.html', context)
 
 
 def chatroom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
     chatroom_messages = chatroom.roommessage_set.all().order_by('-messagecreated')
-
+    participants = chatroom.participants.all()
     if request.method == 'POST':
         roommessage = RoomMessage.objects.create(
             user=request.user,
             chatroom=chatroom,
             body=request.POST.get('body')
         )
+        chatroom.participants.add(request.user)
         return redirect('chatroom', pk=chatroom.id)
 
-    context = {'chatroom': chatroom, 'chatroom_messages': chatroom_messages}
+    context = {'chatroom': chatroom, 'chatroom_messages': chatroom_messages, 'participants': participants}
     return render(request, 'feed/chatroom.html', context)
 
 
@@ -149,3 +151,16 @@ def PostList(request):
     queryset = Post.objects.order_by('-created_on')
     context = {'Post': Post}
     return render(request, 'feed/feed.html', context)
+
+
+def deleteRoomMessage(request, pk):
+    roommessage = RoomMessage.objects.get(id=pk)
+
+    if request.user != roommessage.user:
+        messages.error(request, 'You can not delete this message')
+        return redirect('home')
+
+    if request.method == 'POST':
+        roommessage.delete()
+        return redirect('home')
+    return render(request, 'feed/delete.html', {'obj': roommessage})

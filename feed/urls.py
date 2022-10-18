@@ -11,5 +11,6 @@ urlpatterns = [
     path('create-chatroom', views.createChatRoom, name="create-chatroom"),
     path('update-chatroom/<str:pk>/', views.updateChatRoom, name="update-chatroom"),
     path('delete-chatroom/<str:pk>/', views.deleteChatRoom, name="delete-chatroom"),
+    path('delete-roommessage/<str:pk>/', views.deleteRoomMessage, name="delete-message"),
     path('view-feed/', views.PostList, name="view-feed")
 ]
