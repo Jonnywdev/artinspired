@@ -1,4 +1,28 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1>{{chatroom.name}}</h1>
-{%endblock%}
+<h1>{{chatroom.roomname}}</h1>
+
+<p>{{chatroom.roomdesc}}</p>
+
+<div class="comment-wrapper">
+
+    <h3>Conversation</h3>
+    <hr>
+
+    {% for roommessage in chatroom_messages %}
+    <div>
+        <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}}ago </small>
+        <p>{{roommessage.body}}</p>
+        <hr>
+    </div>
+    {% endfor %}
+    <div class="comment-form">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="Write your message here...">
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}

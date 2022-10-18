@@ -71,13 +71,7 @@
         </div>
     </nav>
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}

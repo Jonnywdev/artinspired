@@ -82,7 +82,8 @@ def home(request):
 
 def chatroom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
-    context = {'chatroom': chatroom}
+    chatroom_messages = chatroom.roommessage_set.all().order_by('-messagecreated')
+    context = {'chatroom': chatroom, 'chatroom_messages': chatroom_messages}
     return render(request, 'feed/chatroom.html', context)
 
 
