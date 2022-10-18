@@ -82,6 +82,13 @@ def home(request):
     return render(request, 'feed/index.html', context)
 
 
+def usersProfile(request, pk):
+    user = User.objects.get(id=pk)
+    chatrooms = user.chatroom_set.all()
+    context = {"user": user, "chatrooms": chatrooms}
+    return render(request, 'feed/profile.html', context)
+
+
 def chatroom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
     chatroom_messages = chatroom.roommessage_set.all()
