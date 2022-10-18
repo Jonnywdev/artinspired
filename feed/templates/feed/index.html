@@ -4,28 +4,37 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            Side bar with links to topics
+            <h3>Browse Topics</h3>
+            <hr>
+            <div>
+                <a href="{% url 'home' %}">ALL</a>
+            </div>
+            {% for topic in topics%}
+            <div class="topics-wrapped">
+                <a href="{% url 'home' %}?q={{topic.name}}">{{topic}}</a>
+            </div>
+            {% endfor%}
         </div>
         <div class="col">
             <a href="{% url 'create-chatroom' %}">Create a chatroom</a>
 
-        <div>
-            {% for chatroom in chatrooms %}
             <div>
-                <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
-                <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
-                <span>@{{chatroom.roomhost.username}}</span>
-                <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
-                <small>{{chatroom.topic.name}}</small>
-                <hr>
+                {% for chatroom in chatrooms %}
+                <div>
+                    <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
+                    <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
+                    <span>@{{chatroom.roomhost.username}}</span>
+                    <h5>{{chatroom.id}} -- <a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
+                    <small>{{chatroom.topic.name}}</small>
+                    <hr>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         <div class="col">
             recent news section
         </div>
     </div>
-  </div>
 </div>
 
 

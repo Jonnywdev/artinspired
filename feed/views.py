@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic, View
-from .models import Post, ChatRoom
+from .models import Post, ChatRoom, RoomTopic
 from .forms import ChatRoomForm
 
 
@@ -20,8 +20,12 @@ from .forms import ChatRoomForm
 
 
 def home(request):
-    chatrooms = ChatRoom.objects.all()
-    context = {'chatrooms': chatrooms}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    chatrooms = ChatRoom.objects.filter(topic__name__icontains=q)
+
+    topics = RoomTopic.objects.all()
+
+    context = {'chatrooms': chatrooms, 'topics': topics}
     return render(request, 'feed/index.html', context)
 
 
