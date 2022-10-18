@@ -1,15 +1,8 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from django.views import generic, View
 from .models import Post, ChatRoom, RoomTopic
 from .forms import ChatRoomForm
-
-
-# class PostList(generic.ListView):
-
-#     model = Post
-#     queryset = Post.objects.order_by('-created_on')
-#     template_name = 'index.html'
-#     paginate_by = 9
 
 
 # chatrooms = [
@@ -21,11 +14,16 @@ from .forms import ChatRoomForm
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    chatrooms = ChatRoom.objects.filter(topic__name__icontains=q)
+    chatrooms = ChatRoom.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(roomname__icontains=q) |
+        Q(roomdesc__icontains=q)
+    )
 
     topics = RoomTopic.objects.all()
+    chatroom_count = chatrooms.count()
 
-    context = {'chatrooms': chatrooms, 'topics': topics}
+    context = {'chatrooms': chatrooms, 'topics': topics, 'chatroom_count': chatroom_count}
     return render(request, 'feed/index.html', context)
 
 
@@ -67,3 +65,16 @@ def deleteChatRoom(request, pk):
         chatroom.delete()
         return redirect('home')
     return render(request, 'feed/delete.html', {'obj': chatroom})
+
+
+def PostList(request):
+
+    # model = Post
+    # queryset = Post.objects.order_by('-created_on')
+    # template_name = 'feed/feed.html'
+    # paginate_by = 9
+    # return render(request, 'feed/feed.html')
+    model = Post
+    queryset = Post.objects.order_by('-created_on')
+    context = {'Post': Post}
+    return render(request, 'feed/feed.html', context)

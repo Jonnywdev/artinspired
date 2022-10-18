@@ -4,7 +4,7 @@
 <html class="h-100">
 
 <head>
-    <title>Feed</title>
+    <title>Art Insspired</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
@@ -34,50 +34,38 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <div class="collapse navbar-collapse" id="navbarText">
-                <!-- <form class="form-inline form-display">
-                    <div class="search-wrapped">
-                        <label for="search">Search for other users</label>
-                        <div class="searchbar-wrapped">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                </div>
-                                <input type="text" id="search" class="form-control blck-border" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                    </div>
-                </form> -->
-                <!--<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Feed</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link show-search" href="{% url 'home' %}"><i class="fa-solid fa-magnifying-glass search"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hide" href="{% url 'home' %}">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Create Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Logout</a>account_logout
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Register</a>account_signup
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Login</a>account_login
-                    </li>
-                    {% endif %}
-                </ul>
-            </div> -->
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div>
+                    <form method="GET" action="{% url 'home'%}">
+                        <input type="text" name="q" placeholder="Search Rooms..."/>
+                    </form>
+                </div>
+                <div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">chatrooms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'view-feed' %}">feed</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
 
