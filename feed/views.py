@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views import generic, View
-from .models import Post, ChatRoom, RoomTopic
+from .models import Post, ChatRoom, RoomTopic, RoomMessage
 from .forms import ChatRoomForm
 
 
@@ -37,7 +37,6 @@ def loginPage(request):
             return redirect('home')
         else:
             messages.error(request, 'Username or Password does not exist')
-
 
     context = {'page': page}
     return render(request, 'feed/login_register.html', context)
@@ -83,6 +82,15 @@ def home(request):
 def chatroom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
     chatroom_messages = chatroom.roommessage_set.all().order_by('-messagecreated')
+
+    if request.method == 'POST':
+        roommessage = RoomMessage.objects.create(
+            user=request.user,
+            chatroom=chatroom,
+            body=request.POST.get('body')
+        )
+        return redirect('chatroom', pk=chatroom.id)
+
     context = {'chatroom': chatroom, 'chatroom_messages': chatroom_messages}
     return render(request, 'feed/chatroom.html', context)
 
