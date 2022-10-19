@@ -1,46 +1,60 @@
 {% extends 'base.html' %} 
 {% block content %}
-<div class="container">
+<div class="container-block">
     <div class="row">
-        <div class="col">
-            <h1>{{chatroom.roomname}}</h1>
-
-            <p>{{chatroom.roomdesc}}</p>
-            
-            <div class="comment-wrapper">
-            
-                <h3>Conversation</h3>
-                <hr>
-            
-                {% for roommessage in chatroom_messages %}
-                <div>
-                    {% if request.user == roommessage.user%}
-                    <a href="{% url 'delete-message' roommessage.id %}">Delete</a>
-                    {% endif %}
-                    <small>@{{roommessage.user}} {{roommessage.messagecreated|timesince}} ago </small>
-                    <p>{{roommessage.body}}</p>
-                    <hr>
+        <div class="col-8 feed-container no-padding">
+            <div class="chatroom-wrapper no-margin">
+                <div class="f-row space-bt">
+                    <a href="{{request.META.HTTP_REFERER}}" class="go-back"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
+                    <div class="f-col hosted">
+                        <p>Hosted By</p>
+                        <h3>@{{chatroom.roomhost}}</h3>
+                    </div>
                 </div>
-                {% endfor %}
+                <h1 class="chatroom-header">{{chatroom.roomname}}</h1>
+
+                <p class="chatroom-subheader">{{chatroom.roomdesc}}</p>
+                
+                <div class="comment-wrapper">
+                    <div class="messages">
+                        <p class="messages-p">Conversation</p>
+                        <hr>
+                        {% for roommessage in chatroom_messages %}
+                        <div class="message-wrapped f-col">
+                            <div class="f-row space-bt">
+                                <small><b>@{{roommessage.user}}</b> {{roommessage.messagecreated|timesince}} ago </small>
+                                {% if request.user == roommessage.user%}
+                                <a href="{% url 'delete-message' roommessage.id %}" class="message-delete">Delete</a>
+                                {% endif %}
+                            </div>
+                            <p>{{roommessage.body}}</p>
+                            <hr>
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    
+                </div>
+                
+                {% if request.user.is_authenticated %}
+                <div class="comment-form">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <input type="text" name="body" placeholder="Write your message here..." id="message-input">
+                    </form>
+                </div>
+                {% endif %}
             </div>
-            
-            {% if request.user.is_authenticated %}
-            <div class="comment-form">
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    <input type="text" name="body" placeholder="Write your message here...">
-                </form>
-            </div>
-            {% endif %}
         </div>
-        <div class="col">
-            <h3>Participants</h3>
-            <hr>
 
+        <div class="col activity-container">
+            <div class="a-title-wrapped">
+                <h3 class="activity-title">Participants</h3>
+            </div>
             {% for user in participants %}
-                <div>
-                    <p>@{{user.username}}</p>
-                </div>
+            <div class="activity-wrapped">
+                <p>@{{user.username}}</p>
+            </div>
             {% endfor %}
         </div>
     </div>
