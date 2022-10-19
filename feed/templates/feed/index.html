@@ -9,10 +9,10 @@
         <div class="col-6 feed-container">
             <div class="feed-top-wrapped f-row">
                 <div class="feed-titles f-col">
-                    <h4 class="main-title">Chat rooms</h4>
+                    <h4 class="main-title">Chatrooms</h4>
                     <h5 class="sub-title">{{chatroom_count}} rooms available</h5>
                 </div>
-                {% if user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                 <a href="{% url 'create-chatroom' %}" class="create-btn"><i class="fa-solid fa-plus"></i> Create Room</a>
                 {% endif %}
             </div>

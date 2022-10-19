@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -102,6 +103,7 @@ def chatroom(request, pk):
     return render(request, 'feed/chatroom.html', context)
 
 
+@login_required(login_url='login')
 def createChatRoom(request):
     form = ChatRoomForm
     if request.method == 'POST':
@@ -114,6 +116,7 @@ def createChatRoom(request):
     return render(request, 'feed/chatroom_form.html', context)
 
 
+@login_required(login_url='login')
 def updateChatRoom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
     form = ChatRoomForm(instance=chatroom)
@@ -132,6 +135,7 @@ def updateChatRoom(request, pk):
     return render(request, 'feed/chatroom_form.html', context)
 
 
+@login_required(login_url='login')
 def deleteChatRoom(request, pk):
     chatroom = ChatRoom.objects.get(id=pk)
 
