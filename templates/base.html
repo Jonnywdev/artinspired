@@ -26,29 +26,29 @@
 
     <!-- Navigation -->
     
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="logo-wrapped">
                 <a class="navbar-brand" href="{% url 'home' %}"><img src="https://res.cloudinary.com/dmegr1g6f/image/upload/v1666089648/art-logo-white_iflpax.png" alt="art inspired logo">
             </div></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse nav-elements" id="navbarText">
                 <div>
                     <form method="GET" action="{% url 'home'%}">
-                        <input type="text" name="q" placeholder="Search Rooms..."/>
+                        <input type="text" name="q" placeholder="Search Rooms..." class="search-bar"/>
                     </form>
                 </div>
                 <div>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">chatrooms</a>
+                            <a class="nav-link" aria-current="page" href="{% url 'home' %}">chat rooms</a>
                         </li>
                         {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">@{{request.user}}</a>
+                            <a class="nav-link" href="{% url 'home' %}">Your Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -83,6 +83,6 @@
         <!-- Content Goes here -->
         {% endblock content %}
     </main> 
-
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

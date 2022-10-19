@@ -1,13 +1,15 @@
-<h3>Recent Activity</h3>
-<hr>
+<div class="a-title-wrapped">
+    <h3 class="activity-title">Recent Activity</h3>
+</div>
 {% for roommessage in chatroom_messages %}
-    <div>
-        <small><a href="{% url 'userprofile' roommessage.user.id %}">@{{roommessage.user}}</a> {{roommessage.messagecreated|timesince}} ago</small>
-        <small>Replied to "{{roommessage.chatroom}}"</small>
-
-        <p>{{roommessage}}</p>
+    <div class="activity-wrapped">
+        <small class="activity-profile"><a href="{% url 'userprofile' roommessage.user.id %}">@{{roommessage.user}}</a> {{roommessage.messagecreated|timesince}} ago</small>
+        <small class="activity-replied">replied to post: "{{roommessage.chatroom}}"</small>
+        <div class="activity-message">
+            <p>{{roommessage}}</p>
+        </div>
         {% if request.user == roommessage.user%}
-        <a href="{% url 'delete-message' roommessage.id %}">Delete</a>
+        <a href="{% url 'delete-message' roommessage.id %}" class="activity-delete">Do you want to delete your comment?</a>
         {% endif %}
         <hr>
     </div>

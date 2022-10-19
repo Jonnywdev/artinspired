@@ -1,14 +1,27 @@
 <div>
     {% for chatroom in chatrooms %}
-    <div>
-        {% if request.user == chatroom.roomhost %}
-        <a href="{% url 'update-chatroom' chatroom.id %}">Edit</a>
-        <a href="{% url 'delete-chatroom' chatroom.id %}">Delete</a>
-        {% endif %}
-        <a href="#">@{{chatroom.roomhost.username}}</a>
-        <h5><a href="{% url 'chatroom' chatroom.id %}">{{chatroom.roomname}}</a></h5>
-        <small>{{chatroom.topic.name}}</small>
+    <div class="chatroom-wrapper">
+        
+        <div class="f-col">
+            <div class="feed-items-wrapped f-row">
+                <a href="#">@{{chatroom.roomhost.username}}</a>
+                <p>Created on {{chatroom.roomcreated}}</p>
+            </div>
+            
+        
+            <div class="feed-settings">
+                {% if request.user == chatroom.roomhost %}
+                <a href="{% url 'update-chatroom' chatroom.id %}" class="settings edit">Edit</a>
+                <a href="{% url 'delete-chatroom' chatroom.id %}" class="settings edit">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <h5><a href="{% url 'chatroom' chatroom.id %}" class="chat-name">{{chatroom.roomname}}</a></h5>
+        <h4><a href="{% url 'chatroom' chatroom.id %}" class="chat-desc">{{chatroom.roomdesc}}</a></h4>
         <hr>
+        <small class="topic-name-small">{{chatroom.topic.name}}</small>
+        
     </div>
     {% endfor %}
 </div>

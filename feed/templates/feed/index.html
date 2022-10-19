@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container-block">
     <div class="row">
         <div class="col bg-color-tplate topics-container">
             {% include 'feed/modular_topics.html' %}
         </div>
-        <div class="col-6">
-            <h5>{{chatroom_count}} rooms available</h5>
-            {% if user.is_authenticated %}
-            <a href="{% url 'create-chatroom' %}">Create a chatroom</a>
-            {% endif %}
+        <div class="col-6 feed-container">
+            <div class="feed-top-wrapped f-row">
+                <div class="feed-titles f-col">
+                    <h4 class="main-title">Chat rooms</h4>
+                    <h5 class="sub-title">{{chatroom_count}} rooms available</h5>
+                </div>
+                {% if user.is_authenticated %}
+                <a href="{% url 'create-chatroom' %}" class="create-btn"><i class="fa-solid fa-plus"></i> Create Room</a>
+                {% endif %}
+            </div>
             {% include 'feed/modular_feed.html' %}
         </div>
-        <div class="col">
+        <div class="col activity-container">
             {% include 'feed/modular_activity.html' %}
         </div>
     </div>
