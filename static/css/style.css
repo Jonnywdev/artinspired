@@ -403,7 +403,7 @@ label {
     padding: 0 !important;
 }
 
-.messages {
+.messages-container {
     background: #2d2d39;
     width: 100%;
     height: 12rem;
@@ -441,6 +441,11 @@ label {
 
 .message-delete:hover {
     color: #ba2d2d;
+}
+
+.participants {
+    color: #72db89;
+    font-size: 20px;
 }
 
 #message-input {
@@ -580,6 +585,51 @@ label {
         font-size: 13px;
     }    
 
+    .hosted h3 { 
+        font-size: 15px;
+    }
+
+    .hosted p {
+        font-size: 12px;
+    }
+
+    .chatroom-header {
+        font-size: 25px;
+    }
+
+    .chatroom-subheader {
+        font-size: 15px;
+    }
+
+    .messages-p {
+        font-size: 13px;
+    }
+
+    .message-wrapped small b {
+        font-size: 13px;
+    }
+
+    .message-wrapped small {
+        font-size: 10px;
+    }
+
+    .message-wrapped p {
+        font-size: 13px;
+    }
+
+    #message-input {
+        font-size: 13px;
+    }
+
+    .participants {
+        font-size: 15px;
+        margin-top: 0.5rem;
+    }
+
+    .col-8 {
+        width: 100%;
+    }
+    
 }
 
 @media (max-width: 600px) {

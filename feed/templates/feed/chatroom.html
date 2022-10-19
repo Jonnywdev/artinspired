@@ -16,7 +16,7 @@
                 <p class="chatroom-subheader">{{chatroom.roomdesc}}</p>
                 
                 <div class="comment-wrapper">
-                    <div class="messages">
+                    <div class="messages-container">
                         <p class="messages-p">Conversation</p>
                         <hr>
                         {% for roommessage in chatroom_messages %}
@@ -53,7 +53,8 @@
             </div>
             {% for user in participants %}
             <div class="activity-wrapped">
-                <p>@{{user.username}}</p>
+                <p class="participants">@{{user.username}}</p>
+                <hr>
             </div>
             {% endfor %}
         </div>
