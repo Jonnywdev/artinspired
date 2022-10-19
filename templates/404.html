@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}
+    404
+{% endblock %}
+{% block content %}
+    <h1 style="margin: 0 10rem;">OOPS, THAT PAGE DOESN'T EXIST!</h1>
+    <a href="{% url 'home' %}" style="margin: 0 10rem;">Go home.</a>
+{% endblock content %}

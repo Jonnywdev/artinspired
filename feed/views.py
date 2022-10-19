@@ -11,6 +11,10 @@ from .models import ChatRoom, RoomTopic, RoomMessage
 from .forms import ChatRoomForm
 
 
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
+
+
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -105,11 +109,14 @@ def chatroom(request, pk):
 
 @login_required(login_url='login')
 def createChatRoom(request):
-    form = ChatRoomForm
+    form = ChatRoomForm()
+
     if request.method == 'POST':
         form = ChatRoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            chatroom = form.save(commit=False)
+            chatroom.roomhost = request.user
+            chatroom.save()
             return redirect('home')
 
     context = {'form': form}
@@ -160,3 +167,8 @@ def deleteRoomMessage(request, pk):
         roommessage.delete()
         return redirect('home')
     return render(request, 'feed/delete.html', {'obj': roommessage})
+
+
+@login_required(login_url='login')
+def updateprofile(request):
+    return render(request, 'feed/update-profile.html')

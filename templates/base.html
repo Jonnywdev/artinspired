@@ -41,15 +41,12 @@
                         <input type="text" name="q" placeholder="Search Rooms..." class="search-bar"/>
                     </form>
                 </div>
-                <div>
+                <div class="nav-links">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{% url 'home' %}">chat rooms</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">chat rooms</a>
                         </li>
                         {% if request.user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Your Account</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
@@ -83,6 +80,5 @@
         <!-- Content Goes here -->
         {% endblock content %}
     </main> 
-<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

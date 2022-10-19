@@ -1,10 +1,10 @@
 <h3 class="topic-title">Browse Topics</h3>
 <hr>
-<div>
+<div class="nav-links">
     <a href="{% url 'home' %}" class="topic active">ALL</a>
 </div>
 {% for topic in topics%}
-<div class="topics-wrapped">
+<div class="topics-wrapped nav-links">
     <a href="{% url 'home' %}?q={{topic.name}}" class="topic">{{topic}}</a>
 </div>
 {% endfor%}

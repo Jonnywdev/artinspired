@@ -18,6 +18,10 @@ a {
     text-decoration: none;
 }
 
+.messages {
+    list-style: none;
+}
+
 .g-margin-top {
     margin-top: 3rem !important;
 }
