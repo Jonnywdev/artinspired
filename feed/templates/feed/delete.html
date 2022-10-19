@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<form method="POST" action="">
-    {%csrf_token%}
-    <p>Are you sure you want to delete "{{obj}}"?</p>
-    
-    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
-    <input type="submit" value="Confirm">
-</form>
+<div class="container-block g-margin-top">
+    <div class="chatroom-wrapper">
+        <form method="POST" action="" class="delete-form">
+            {%csrf_token%}
+            <p class="delete-p">Are you sure you want to delete "{{obj}}"?</p>
+            
+            <a href="{{request.META.HTTP_REFERER}}" class="delete-a">Go Back</a>
+            <input type="submit" value="Confirm" id="delete-btn">
+        </form>
+    </div>
+</div>
 
 {% endblock content %}

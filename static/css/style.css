@@ -318,6 +318,28 @@ label {
     display: block;
 }
 
+.delete-p {
+    color: #eee;
+}
+
+.delete-a {
+    color: #000;
+    background: #72db89;
+    padding: 10px;
+    margin-right: 10px; 
+    border-radius: 5px;
+}
+
+.delete-a:hover {
+    color: #000;
+}
+
+#delete-btn {
+    background: #d83d3d;
+    color: #000;
+    padding: 8px 10px;
+}
+
 @media (max-width: 900px) {
 
     .container-block {
@@ -516,6 +538,10 @@ label {
 
     .g-margin-top {
         margin-top: 2rem !important;
+    }
+
+    .delete-form {
+        text-align: center;
     }
 
 }
