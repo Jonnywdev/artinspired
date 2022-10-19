@@ -4,7 +4,7 @@
         
         <div class="f-col">
             <div class="feed-items-wrapped f-row">
-                <a href="#">@{{chatroom.roomhost.username}}</a>
+                <a href="{% url 'userprofile' chatroom.roomhost.id %}">@{{chatroom.roomhost.username}}</a>
                 <p>Created on {{chatroom.roomcreated}}</p>
             </div>
             
