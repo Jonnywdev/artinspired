@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div>
-    <form action="" method="POST">
-    {% csrf_token %}
-        {{form.as_p}}
-    <input type="submit" value="Submit">
-    </form>
+<div class="container-block g-margin-top">
+    <div class="chatroom-wrapper">
+        <form action="" method="POST" class="create-chat">
+        {% csrf_token %}
+            {{form.as_p}}
+        <input type="submit" value="Submit" id="create-chatroom">
+        </form>
+    </div>
 </div>
+
 
 {% endblock content %}
