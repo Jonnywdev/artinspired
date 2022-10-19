@@ -1,108 +1,245 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome Jonnywdev,
+# Art Inspired
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[Here is a link to the live final project](https://artinspired.herokuapp.com/)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+## Introduction
+Art inspired was built to help new designers, communicate with other people in the industry. The idea was from Slack, I wanted to do something similar, where people can create a new chatroom about any topic and anyone can jump on to give their opinion.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of contents
+* [Website owner business goals](#Website-owner-business-goals)
+* [User goals](#User-goals)
+* [Features](#Features)
+* [Technology](#Technology)
+* [Testing](#Testing)
+* [Deployment](#Deployment)
+* [Credits](#Credits)
+* [Screenshots](#Screenshots)
 
-`python3 -m http.server`
+# User goals
+## All user goals
+- User is able to create an account.
+- User is able to easily navigate through the site.
+- User can see what new chat rooms are open.
+## Returning user goals
+- User can easily log back on.
+- User is able to easily find recent activity.
+- User can join into conversations.
+## Website owner business goals
+- Anyone is welcome to join to help create a bigger community.
+- No limit to messages so communications can get interesting.
+- To be able to edit or delete chat rooms and conversations.
 
-A blue button should appear to click: _Make Public_,
+# Features
+## Clean structure
+The website is designed to give the user a great experience and to be user-friendly on all types of devices. There will be no difference in the experience users have when on a mobile compared to a laptop!
 
-Another blue button should appear to click: _Open Browser_.
+### Wireframes
+I used Adobe XD to create my wireframes.
+#### Wireframe for big screens
+![wireframes](static/docs/images/readme-images/) 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+#### Wireframe for mobile screens
+![wireframes](static/docs/images/readme-images/) 
 
-A blue button should appear to click: _Make Public_,
+### Site styles
 
-Another blue button should appear to click: _Open Browser_.
+#### Colours
+* Background Colour - #2d2d39
+* Secondary Colour - #3f4156
+* Main Typeface Colour - #eee
+* Secondary Typeface Colour - #72db89
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Fonts
+* For my fonts I used 'Lato', with a backup off sans-serif.
 
-To log into the Heroku toolbelt CLI:
+#### Logo 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+* For my logo I used Adobe Illustrator. I used to make logos as a hobbie.
+<br>
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+[Back to Table of contents](#table-of-contents)
 
-------
 
-## Release History
+## Features of the Website
+The website consists of 9 pages. 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## Navigation bar
+* Navigation bar is viable on the top of each page, it is responsive to screen size and will adapt when the size changes.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+#### Navigation scheme:
+- On the left side there is the logo, which also can be used as a navigation link to the index page.
+- On the right side there is a search bar and 3 links, which are:
+    - Chat Rooms (Home)
+    - Login
+    - Register
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Home
+* ##### Topics
+- This section holds all of the different topics of the website.
+* ##### Feed
+- This section shows all of the open chat rooms that are open at that time.
+- Each card shows the host name, when it was created, chat room name/description and what topic it covers.
+* ##### Recent activity
+- This section shows users all the new comments.
+- Each card shows the name of the user that replied, when it was sent, the post they are replying to and a snipit of what the message was.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+<br>
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+[Back to Table of contents](#table-of-contents)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+# Technology
+### HTML5
+* As a structure language.
+### CSS
+* As a style language
+### Font Awesome
+* As an icon library for social links.
+### Google Fonts
+* As a font resource.
+### Heroku
+* was used for deployment of the live site.
+### GitHub
+* As a software hosting platform to keep the project in a remote location.
+### Git 
+* As a version-control system tracking.
+### Gitpod
+* As a development hosting platform.
+### Adobe XD
+* As a wireframing tool.
+### Adobe Illustrator
+* As an Logo creator.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+# Frameworks
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Bootstrap
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Django
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+<br>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+[Back to Table of contents](#table-of-contents)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+# Testing
+## Functionality Testing
+I used Mozilla web developer tools and Chrome developer tools throughout the project for testing and solving problems with responsiveness and style issues.
 
-------
+## Compatibility Testing
+The website was tested across multiple virtual mobile devices and browsers. I checked all supported devices in both web developer tools.
 
-## FAQ about the uptime script
+I tested on hardware devices such as: Apple Ipad 12 pro, Samsung S20 Ultra smart phone with Android 10 and used a Iphone 5 to compare the difference in size.
 
-**Why have you added this script?**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+# User goals
+## All user goals
 
-**How will this affect me?**
+## User Stories Testing
+### As a business owner:
+- Anyone is welcome to join to help create a bigger community
+    > Everyone is easily able to register for free from the home page.
+- No limit to messages so communications can get interesting.
+    > I deciided not to set a limit, just to sring the box so it doesn't go on and on.
+- To be able to edit or delete chat rooms and conversations.
+    > Easy access to different files in /admin.
+### As a new customer
+- User is able to create an account.
+    > Easily able to register from the home page.
+- User is able to easily navigate through the site.
+    > User can find any information out very easily by clicking on the about us page, which is on the navigation.
+- User can see what new chat rooms are open.
+    > New rooms pop up at the top of the feed. They also tell the user the date that they were opened.
+### As a returning customer
+- User can easily log back on.
+   > User can find Login button in the header.
+- User is able to easily find recent activity.
+    > Recent activity is always on the home page.
+- User can join into conversations.
+    > Users are able to click a chat room and get straight to messaging as long as they are logged in! 
+___
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+Initial screenshot
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+![Lighthouse initial screenshot](static/docs/images/readme-images/lighthouse-1.png)
 
-**So….?**
+This confused me for a while
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![Lighthouse final screenshot]![Lighthouse initial screenshot](static/docs/images/readme-images/lighthouse-2.png)
 
-**Can I opt out?**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+I noticed that the tests scores vary from time to time and depend on external libraries as well.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+## Code Validation
+At the end of the project I used 2 websites to validate the code.
+ * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) to validate CSS
+ * [Nu Html Checker](https://validator.w3.org/) to test HTML
+ All code passed with no errors or warnings.
+<br>
 
-**Anything more?**
+[Back to Table of contents](#table-of-contents)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+# Deployment
+## DEPLOYMENT
 
----
+### Heroku Deployment
 
-Happy coding!
+This project was developed using [GitPod](https://gitpod.io) and pushed to [GitHub](https://github.com/) then was deployed using [Heroku](https://www.heroku.com/) using the following steps below:
+
+#### Connecting to Heroku
+
+1. Log in to Heroku and create a new app by clicking `New` and `Create New App` and giving it an original name and setting the region to closest to your location.
+2. Navigate to `Heroku Resources` and add `Postgres` using the free plan.
+3. Create a `requirements.txt` file using the command `pip3 freeze --local > requirements.txt` in the GitPod terminal.
+4. Create a `Procfile` with the terminal command `web: gunicorn artinspired.wsgi:application` and at this point checking the Procfile to make sure there is no extra blank line as this can cause issues when deploying to Heroku.
+5. Use the loaddata command to load the fixtures for both json files: `python3 manage.py loaddata categories` and `python3 manage.py loaddata products`.
+6. If it returns error message: `django.db.utils.OperationalError: FATAL: role <somerandomletters> does not exist` run `unset PGHOSTADDR` in your terminal and run the commands in step 11 again.
+7. From the CLI log in to Heroku using command `heroku login -i`.
+8. Temporarily disable Collectstatic by running: `heroku:config:set DISABLE_COLLECTSTATIC=1 --app <heroku-app-name>` So that Heroku won't try to collect static files when we deploy.
+9. Add Heroku app name to `ALLOWED_HOSTS` in settings.py.
+10. Commit changes to GitHub using `git add .`, `git commit -m <commit message>`, `git push`.
+11. Then deploy to Heroku using `git push heroku main`.
+12. If the git remote isn't initialised you may have to do that first by running `heroku git:remote -a <heroku-app-name>`
+13. Create a superuser using command: `heroku run python3 manage.py createsuperuser` so that you can log in to admin as required.
+14. From the Heroku dashboard click `Deploy` -> `Deployment Method` and select `GitHub`.
+15. Search for your GitHub repo and connect then Enable Automatic Deploys.
+16. Generate secret key. Strong secret keys can be obtained from [MiniWebTool](https://miniwebtool.com/django-secret-key-generator/). This automatically generates a secret key 50 characters long with alphanumeric characters and symbols. 
+17. Add secret key to GitPod variables and Heroku config vars.
+18. Set up Amazon AWS S3 bucket using instructions [below](#amazon-aws)
+19. In the dashboard click `Settings` -> `Reveal Config Vars`
+20. Set [config vars](#config-vars) using advice below.
+
+
+<br>
+
+[Back to Table of contents](#table-of-contents)
+
+# Credits
+* To complete this project I used Code Institute student template: [gitpod full template]https://github.com/Code-Institute-Org/gitpod-full-template]
+
+* Ideas and knowledge library:
+
+    * [w3schools.com](https://www.w3schools.com)
+
+    * [css-tricks.com](https://css-tricks.com/)
+
+    * [stackoverflow.com](https://stackoverflow.com/)
+    
+    * [codepen.io](https://codepen.io/)
+
+## Code:
+
+
+<br>
+
+[Back to Table of contents](#table-of-contents)
+
+# Screenshots
+## Project Screenshots
+
+I ran out of Time, my time management for this project was not good. I spent to much time going back over python.
+
+[Back to Table of contents](#table-of-contents)
