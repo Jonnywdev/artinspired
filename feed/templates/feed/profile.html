@@ -2,18 +2,22 @@
 
 {% block content %}
 
-<h1>{{user.username}}</h1>
-
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col topics-container">
             {% include 'feed/modular_topics.html' %}
         </div>
-        <div class="col-6">
+        <div class="col-6 feed-container">
+            <div class="feed-titles f-col">
+                <h4 class="main-title">@{{user.username}}'s account.</h4>
+                <h5 class="sub-title">Check out all of my chat rooms!</h5>
+            </div>
             {% include 'feed/modular_feed.html' %}
         </div>
         <div class="col">
-            {% include 'feed/modular_activity.html' %}
+            <div class="col activity-container">
+                {% include 'feed/modular_activity.html' %}
+            </div>
         </div>
     </div>
 </div>
