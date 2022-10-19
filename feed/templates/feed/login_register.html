@@ -3,29 +3,32 @@
 {% block content %}
 
 {% if page == 'login' %}
-<div>
-    <form method="POST" action="">
-    {% csrf_token %}
+<div class="container-block g-margin-top">
+    <div class="chatroom-wrapper">
+        <form method="POST" action="" class="generic-form">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="Enter Username" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="Enter Password" id="password">
+        <input type="submit" value="Login">
+        </form>
 
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Enter Username" id="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" placeholder="Enter Password" id="password">
-    <input type="submit" value="Login">
-    </form>
-
-    <p>Haven't signed up yet?</p>
-    <a href="{% url 'register' %}">Sign Up</a>
+        <p class="signup-p">Haven't signed up yet?</p>
+        <a href="{% url 'register' %}" class="signup-btn">Sign Up</a>
+    </div>
 </div>
 {% else %}
-<div>
-    <form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Register">
-    </form>
-    <p>Already Signed up?</p>
-    <a href="{% url 'login' %}">login</a>
+<div class="container-block g-margin-top">
+    <div class="chatroom-wrapper">
+        <form method="POST" action="" class="generic-form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Register">
+        </form>
+        <p class="signup-p">Already Signed up?</p>
+        <a href="{% url 'login' %}" class="signup-btn">Login</a>
+    </div>
 </div>
 {% endif %}
 
